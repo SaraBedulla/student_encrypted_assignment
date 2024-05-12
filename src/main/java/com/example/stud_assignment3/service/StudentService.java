@@ -34,12 +34,12 @@ public class StudentService {
 
     private final EncryptionService encryptionService;
 
-
+    private final EncryptedStudentRepository encryptedStudentRepository;
 
 
 
     @Autowired
-    public StudentService(StudentRepository studentRepository, ExamRepository examRepository, AssignmentRepository assignmentRepository, ExerciseRepository exerciseRepository, User5Repository user5Repository, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, StudentDTO studentDTO, AESUtils aesUtils, EncryptionService encryptionService) {
+    public StudentService(StudentRepository studentRepository, ExamRepository examRepository, AssignmentRepository assignmentRepository, ExerciseRepository exerciseRepository, User5Repository user5Repository, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, StudentDTO studentDTO, AESUtils aesUtils, EncryptionService encryptionService, EncryptedStudentRepository encryptedStudentRepository) {
         this.studentRepository = studentRepository;
         this.examRepository = examRepository;
         this.assignmentRepository = assignmentRepository;
@@ -51,6 +51,7 @@ public class StudentService {
 
         this.aesUtils = aesUtils;
         this.encryptionService = encryptionService;
+        this.encryptedStudentRepository = encryptedStudentRepository;
     }
 
 
@@ -273,6 +274,9 @@ public class StudentService {
     }
 
 
+    public List<String> getAllDecryptedNames() {
+        return encryptedStudentRepository.findAllDecryptedNames();
+    }
 
     }
 

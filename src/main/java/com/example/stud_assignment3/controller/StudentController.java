@@ -215,5 +215,11 @@ public class StudentController {
     public List<StudentDTO> findAllStudentsWithGrades()  {
         return studentService.findAllStudentsWithGrades();
     }
+
+
+    @GetMapping("/decrypted-names")
+    public List<String> getAllDecryptedNames() {
+        return studentService.getAllDecryptedNames();
+    }
     }
 

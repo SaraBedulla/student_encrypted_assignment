@@ -26,14 +26,6 @@ public class EncryptionService {
     }
 
 
-    public void decryptStudentNames() {
-        List<Student> students = studentRepository.findAll();
-        students.forEach(student -> {
-            String decryptedName = decryptHex(student.getName());
-            student.setName(decryptedName);
-            studentRepository.save(student); // Save the decrypted name back to the database
-        });
-    }
 
     public String decryptHex(String hexEncodedData) {
         try {
